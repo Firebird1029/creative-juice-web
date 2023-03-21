@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from "next/link"
 
 export default function Login() {
 	return (
@@ -47,11 +48,13 @@ export default function Login() {
 									log in
 								</button>
 
-								<div className="my-5">
+								<div className="mt-8">
 									<p className="text-xs">
 										don&apos;t have an account?&nbsp;
 										<span className="font-bold text-primary">
-											<a href="/register">register</a>
+											<Link href="/register">
+												register
+											</Link>
 										</span>
 									</p>
 								</div>
