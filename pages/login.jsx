@@ -18,28 +18,31 @@ export default function Login() {
 								htmlFor="email"
 								className="block mb-2 text-sm font-medium text-gray-900"
 							>
-								email
+								<span className="mb-1 inline-block">email</span>
+								<input
+									type="email"
+									id="email"
+									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+									placeholder=""
+									required
+								/>
 							</label>
-							<input
-								type="email"
-								id="email"
-								className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-								placeholder=""
-								required
-							/>
 							<br />
 							<label
 								htmlFor="password"
 								className="block mb-2 text-sm font-medium text-gray-900"
 							>
-								password
+								<span className="mb-1 inline-block">
+									password
+								</span>
+								<input
+									type="password"
+									id="password"
+									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+									required
+								/>
 							</label>
-							<input
-								type="password"
-								id="password"
-								className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-								required
-							/>
+
 							<div className="w-full text-center my-16">
 								<button
 									type="submit"
