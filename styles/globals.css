@@ -9,4 +9,11 @@
 		padding: theme("spacing.12");
 		box-shadow: theme("boxShadow.xl");
 	}
+
+	.profile-card {
+		background-color: theme("colors.white");
+		border-radius: theme("borderRadius.xl");
+		padding: theme("spacing.4");
+		box-shadow: theme("boxShadow.2xl");
+	}
 }

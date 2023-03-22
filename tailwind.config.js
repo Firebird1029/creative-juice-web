@@ -15,6 +15,7 @@ module.exports = {
 			slate: colors.slate,
 
 			primary: "#5C38F5",
+			secondary: "#DFD7FC",
 		},
 		extend: {},
 	},
