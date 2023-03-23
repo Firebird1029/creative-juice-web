@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Link from "next/link"
+import Logo from "@/components/Logo"
 
 export default function Register() {
 	return (
@@ -9,6 +10,7 @@ export default function Register() {
 				<meta name="description" content="Creative Juice" />
 			</Head>
 			<main className="p-6 bg-primary flex min-h-screen">
+				<Logo color="white" />
 				<div className="container m-auto max-w-xl">
 					<div className="card min-w-full">
 						<p className="text-3xl">register</p>

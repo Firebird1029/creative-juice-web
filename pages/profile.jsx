@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Image from "next/image"
-// import Link from "next/link"
+import Logo from "@/components/Logo"
 
 export default function Profile() {
 	return (
@@ -10,6 +10,7 @@ export default function Profile() {
 				<meta name="description" content="Creative Juice" />
 			</Head>
 			<main className="p-6 bg-white flex min-h-screen">
+				<Logo color="purple" />
 				<div className="container m-auto max-w-xl">
 					<div className="h-36 w-full bg-primary rounded-lg mb-8" />
 					{/* TODO move next div to overlap */}
