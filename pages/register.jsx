@@ -3,6 +3,7 @@ import Link from "next/link"
 import Logo from "@/components/Logo"
 import { useState } from "react"
 import { useAuth } from "@/components/authContext"
+import { useRouter } from "next/router"
 
 export default function Register() {
 	const [email, setEmail] = useState("")
@@ -10,6 +11,7 @@ export default function Register() {
 	const [passwordConfirm, setPasswordConfirm] = useState("")
 	const [error, setError] = useState(null)
 	const { createUser } = useAuth()
+	const router = useRouter()
 
 	const onSubmit = (event) => {
 		setError(null)
@@ -17,7 +19,7 @@ export default function Register() {
 			createUser(email, password)
 				.then(() => {
 					console.log("Success. The user is created in firebase")
-					// router.push("/")
+					router.push("/profile")
 				})
 				.catch((error) => {
 					setError(error.message)

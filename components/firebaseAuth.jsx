@@ -5,6 +5,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	onAuthStateChanged,
+	signOut,
 } from "firebase/auth"
 
 const formatAuthUser = (user) => ({
@@ -42,8 +43,14 @@ export default function useFirebaseAuth() {
 
 	const createUser = (email, password) =>
 		createUserWithEmailAndPassword(auth, email, password)
+			.then((userCredential) => {
+				console.log(userCredential.user)
+			})
+			.catch((error) => {
+				console.log(error.message)
+			})
 
-	const signOut = () => firebase.auth().signOut().then(clear)
+	const signOutUser = () => signOut(auth)
 	// const signOut = () => {} //TODO: Implement signOut
 
 	useEffect(() => {
@@ -56,6 +63,6 @@ export default function useFirebaseAuth() {
 		loading,
 		signIn,
 		createUser,
-		signOut,
+		signOutUser,
 	}
 }

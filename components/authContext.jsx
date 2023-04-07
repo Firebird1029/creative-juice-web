@@ -6,7 +6,7 @@ const authUserContext = createContext({
 	loading: true,
 	signIn: async () => {},
 	createUser: async () => {},
-	signOut: async () => {},
+	signOutUser: async () => {},
 })
 
 export function AuthUserProvider({ children }) {
