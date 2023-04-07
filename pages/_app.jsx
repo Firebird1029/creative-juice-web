@@ -1,5 +1,6 @@
 import Head from "next/head"
 import "@/styles/globals.css"
+import { AuthUserProvider } from "@/components/authContext"
 
 export default function App({ Component, pageProps }) {
 	return (
@@ -11,7 +12,9 @@ export default function App({ Component, pageProps }) {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Component {...pageProps} />
+			<AuthUserProvider>
+				<Component {...pageProps} />
+			</AuthUserProvider>
 		</>
 	)
 }

@@ -1,8 +1,19 @@
 import Head from "next/head"
 import Image from "next/image"
 import Logo from "@/components/Logo"
+import { useAuth } from "@/components/authContext"
+import { useEffect } from "react"
+import { useRouter } from "next/router"
 
 export default function Profile() {
+	const router = useRouter()
+	const { authUser, loading, signOutUser } = useAuth()
+	useEffect(() => {
+		if (!loading && !authUser) router.push("/login")
+	}, [authUser, loading])
+	const onButtonClick = () => {
+		signOutUser().then(() => router.push("/login"))
+	}
 	return (
 		<>
 			<Head>
@@ -11,15 +22,16 @@ export default function Profile() {
 			</Head>
 			<main className="p-6 bg-white flex min-h-screen">
 				<Logo color="purple" />
+				<button onClick={onButtonClick}>Log Out</button>
 				<div className="container m-auto max-w-xl">
 					<div className="h-36 w-full bg-primary rounded-lg mb-8" />
 					{/* TODO move next div to overlap */}
-					<div class="flex justify-between flex-col sm:flex-row">
+					<div className="flex justify-between flex-col sm:flex-row">
 						<div className="mb-8">
 							<div className="w-32 h-32 bg-secondary rounded-full">
 								<Image alt="TODO" />
 							</div>
-							<p className="text-3xl mt-4">peter li</p>
+							<p className="text-3xl mt-4">{authUser?.email}</p>
 							<p className="text-md">guitarist @ yale</p>
 						</div>
 						<div className="mb-8 sm:mb-0">
