@@ -1,8 +1,31 @@
 import Head from "next/head"
 import Link from "next/link"
 import Logo from "@/components/Logo"
+import { useState } from "react"
+import { useAuth } from "@/components/authContext"
 
 export default function Register() {
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
+	const [passwordConfirm, setPasswordConfirm] = useState("")
+	const [error, setError] = useState(null)
+	const { createUser } = useAuth()
+
+	const onSubmit = (event) => {
+		setError(null)
+		if (password === passwordConfirm)
+			createUser(email, password)
+				.then(() => {
+					console.log("Success. The user is created in firebase")
+					// router.push("/")
+				})
+				.catch((error) => {
+					setError(error.message)
+					console.log(error)
+				})
+		else setError("Password do not match")
+		event.preventDefault()
+	}
 	return (
 		<>
 			<Head>
@@ -13,10 +36,10 @@ export default function Register() {
 				<Logo color="white" />
 				<div className="container m-auto max-w-xl">
 					<div className="card min-w-full">
-						<p className="text-3xl">register</p>
+						<p className="text-3xl">Register</p>
 						<br />
-						<form className="form">
-							<label
+						<form className="form" onSubmit={onSubmit}>
+							{/* <label
 								htmlFor="name"
 								className="block mb-2 text-sm font-medium text-gray-900"
 							>
@@ -29,49 +52,77 @@ export default function Register() {
 									placeholder=""
 									required
 								/>
-							</label>
+							</label> */}
 							<br />
 							<label
 								htmlFor="email"
 								className="block mb-2 text-sm font-medium text-gray-900"
 							>
-								<span className="mb-1 inline-block">email</span>
+								<span className="mb-1 inline-block">Email</span>
 
 								<input
 									type="email"
 									id="email"
 									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-									placeholder=""
+									placeholder="Email"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
 									required
 								/>
 							</label>
-							<br />
+
 							<label
 								htmlFor="password"
 								className="block mb-2 text-sm font-medium text-gray-900"
 							>
 								<span className="mb-1 inline-block">
-									password
+									Password
 								</span>
 
 								<input
 									type="password"
 									id="password"
 									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+									placeholder="Password"
+									value={password}
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
 									required
 								/>
 							</label>
+							<label
+								htmlFor="password"
+								className="block mb-2 text-sm font-medium text-gray-900"
+							>
+								<span className="mb-1 inline-block">
+									Confirm Password
+								</span>
+
+								<input
+									type="password"
+									id="confirm-password"
+									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+									placeholder="Confirm Password"
+									value={passwordConfirm}
+									onChange={(e) =>
+										setPasswordConfirm(e.target.value)
+									}
+									required
+								/>
+							</label>
+							{/* <br /> */}
 							<div className="w-full text-center my-16">
 								<button
 									type="submit"
 									className="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-16 py-2 text-center"
 								>
-									register
+									Register
 								</button>
 
 								<div className="mt-8">
 									<p className="text-xs">
-										have an account?&nbsp;
+										Have an account?&nbsp;
 										<span className="font-bold text-primary">
 											<Link href="/login">login</Link>
 										</span>
