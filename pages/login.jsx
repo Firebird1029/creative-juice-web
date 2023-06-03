@@ -61,7 +61,7 @@ export default function Login() {
 								className="block mb-2 text-sm font-medium text-gray-900"
 							>
 								<span className="mb-1 inline-block">
-									password
+									Password
 								</span>
 								<input
 									type="password"
@@ -86,7 +86,7 @@ export default function Login() {
 
 								<div className="mt-8">
 									<p className="text-xs">
-										don&apos;t have an account?&nbsp;
+										Don&apos;t have an account?&nbsp;
 										<span className="font-bold text-primary">
 											<Link href="/register">
 												Register

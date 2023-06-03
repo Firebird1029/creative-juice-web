@@ -15,7 +15,7 @@ export default function Register() {
 
 	const onSubmit = (event) => {
 		setError(null)
-		if (password === passwordConfirm)
+		/* if (password === passwordConfirm)
 			createUser(email, password)
 				.then(() => {
 					console.log("Success. The user is created in firebase")
@@ -25,7 +25,8 @@ export default function Register() {
 					setError(error.message)
 					console.log(error)
 				})
-		else setError("Password do not match")
+		else setError("Password do not match") */
+		alert("Registration is currently paused.")
 		event.preventDefault()
 	}
 	return (
@@ -73,9 +74,11 @@ export default function Register() {
 								/>
 							</label>
 
+							<br />
+
 							<label
 								htmlFor="password"
-								className="block mb-2 text-sm font-medium text-gray-900"
+								className="block mb-4 text-sm font-medium text-gray-900"
 							>
 								<span className="mb-1 inline-block">
 									Password
@@ -126,7 +129,7 @@ export default function Register() {
 									<p className="text-xs">
 										Have an account?&nbsp;
 										<span className="font-bold text-primary">
-											<Link href="/login">login</Link>
+											<Link href="/login">Login</Link>
 										</span>
 									</p>
 								</div>
